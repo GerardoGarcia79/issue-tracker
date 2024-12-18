@@ -1,4 +1,4 @@
-import IssueForm from "../_components/IssueForm";
+import IssueForm from "./DynamicPage";
 
 const NewIssuePage = () => {
   return <IssueForm />;
