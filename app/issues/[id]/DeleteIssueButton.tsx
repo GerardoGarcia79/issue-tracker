@@ -1,7 +1,7 @@
 import { AlertDialog, Button, Flex } from "@radix-ui/themes";
 import React from "react";
+import DeleteButton from "./edit/DeleteButton";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
   return (
     <AlertDialog.Root>
@@ -21,7 +21,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
             </Button>
           </AlertDialog.Cancel>
           <AlertDialog.Action>
-            <Button color="red">Delete Issue</Button>
+            <DeleteButton issueId={issueId} />
           </AlertDialog.Action>
         </Flex>
       </AlertDialog.Content>
