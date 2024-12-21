@@ -33,7 +33,7 @@ const IssueForm = ({ issue }: { issue?: Issue }) => {
       setSubmitting(true);
       if (issue) await axios.patch("/api/issues/" + issue.id, data);
       else await axios.post("/api/issues", data);
-      router.push("/issues");
+      router.push("/issues/list");
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       setSubmitting(false);
