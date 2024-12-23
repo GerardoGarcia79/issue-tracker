@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 import IssueForm from "./DynamicPage";
 
 interface Props {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
-const EditIssuePage = async ({ params }: Props) => {
+const EditIssuePage = async (props: Props) => {
+  const params = await props.params;
   const resolvedParams = await Promise.resolve(params);
 
   const issue = await prisma.issue.findUnique({
