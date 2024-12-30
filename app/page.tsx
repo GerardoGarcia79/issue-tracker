@@ -5,15 +5,9 @@ import IssueSummary from "./IssueSummary";
 import LatestIssues from "./LatestIssues";
 import { Metadata } from "next";
 
-export default async function Home() {
-  // const totals = {
-  //   open: await prisma.issue.count({ where: { status: "OPEN" } }),
-  //   inProgress: await prisma.issue.count({
-  //     where: { status: "IN_PROGRESS" },
-  //   }),
-  //   closed: await prisma.issue.count({ where: { status: "CLOSED" } }),
-  // };
+export const revalidate = 0;
 
+export default async function Home() {
   const totals = {
     open: 0,
     inProgress: 0,
