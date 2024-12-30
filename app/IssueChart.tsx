@@ -12,6 +12,7 @@ const IssueChart = ({ totals }: Props) => {
     { label: "In Progress", value: totals.inProgress },
     { label: "Closed", value: totals.closed },
   ];
+  console.log(totals);
 
   return (
     <Card>

@@ -6,13 +6,29 @@ import LatestIssues from "./LatestIssues";
 import { Metadata } from "next";
 
 export default async function Home() {
+  // const totals = {
+  //   open: await prisma.issue.count({ where: { status: "OPEN" } }),
+  //   inProgress: await prisma.issue.count({
+  //     where: { status: "IN_PROGRESS" },
+  //   }),
+  //   closed: await prisma.issue.count({ where: { status: "CLOSED" } }),
+  // };
+
   const totals = {
-    open: await prisma.issue.count({ where: { status: "OPEN" } }),
-    inProgress: await prisma.issue.count({
-      where: { status: "IN_PROGRESS" },
-    }),
-    closed: await prisma.issue.count({ where: { status: "CLOSED" } }),
+    open: 0,
+    inProgress: 0,
+    closed: 0,
   };
+
+  try {
+    totals.open = await prisma.issue.count({ where: { status: "OPEN" } });
+    totals.inProgress = await prisma.issue.count({
+      where: { status: "IN_PROGRESS" },
+    });
+    totals.closed = await prisma.issue.count({ where: { status: "CLOSED" } });
+  } catch (error) {
+    console.error("Error fetching issue counts:", error);
+  }
 
   return (
     <Grid columns={{ initial: "1", md: "2" }} gap="5">
